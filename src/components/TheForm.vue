@@ -1,5 +1,9 @@
 <script>
+import RatingControl from './RatingControl.vue';
   export default {
+    components: {
+      RatingControl,
+    },
   data () {
     return {
       userName: '',
@@ -26,7 +30,7 @@
         console.log('Checkboxes');
         console.log(this.interest);
         console.log('Radio Button');
-        console.log(this.how);
+        console.log(this.how);Other
         this.interest = [];
         this.how = null;
         console.log('Confirm?');
@@ -92,6 +96,14 @@
         <input id="how-other" name="how" type="radio" value="Other"  v-model="how" />
         <label for="how-other">Other</label>
       </div>
+    </div>
+    <div class="form-control">
+      <ration-control></ration-control>
+    </div>
+    <div class="form-control">
+      <input type="checkbox" id="confirm-terms" name="confirm-term">
+      <label for="confirm-terms">Agree to terms of use?</label>
+
     </div>
     <div>
       <button>Save Data</button>
