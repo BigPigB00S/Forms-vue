@@ -1,7 +1,3 @@
-<template>
-  <the-form></the-form>
-</template>
-
 <script>
 import TheForm from './components/TheForm.vue';
 
@@ -11,6 +7,12 @@ export default {
   }  
 }
 </script>
+
+
+<template>
+  <the-form></the-form>
+</template>
+
 
 <style>
 * {
