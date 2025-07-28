@@ -1,59 +1,33 @@
 <script>
-import RatingControl from './RatingControl.vue';
-  export default {
-    components: {
-      RatingControl,
-    },
-  data () {
+export default {
+  data() {
     return {
-      userName: '',
+      userName: "",
       userAge: null,
-      referrerUser: 'newspaper',
-      interest: [],
-      how: null,
-      confirm: false,
-      userNameValidity: 'pending'
-
-    }
-  },  
-    methods: {
-      submitForm (){
-        console.log('Username:' + this.userName);
-        this.userName = '';
-        console.log('User age:');
-        console.log(this.userAge + 5);
-        console.log(this.$refs.ageInput.value + 5);
-        console.log(20);
-        this.userAge = null;
-        console.log('Referrer:' + this.referrerUser);
-        this.referrer = 'newspaper';
-        console.log('Checkboxes');
-        console.log(this.interest);
-        console.log('Radio Button');
-        console.log(this.how);Other
-        this.interest = [];
-        this.how = null;
-        console.log('Confirm?');
-        this.confirm = false;
-      },
-      validateInput () {
-        if(this.userName === '') {
-          this.userNameValidity = 'invalid';
-        }else {
-          this.userNameValidity = 'valid';
-        }
-      }
-    }
-  }
-
+      referrer: "newspaper",
+    };
+  },
+  methods: {
+    submitForm() {
+      console.log("username:" + this.userName);
+      this.userName = "";
+      console.log("user age:");
+      console.log(this.userAge + 5);
+      console.log(this.$refs.ageInput.value + 5);
+      console.log(31);
+      this.userAge = null;
+      console.log("Referrer:" + this.referrer);
+      this.referrer = "newspaper";
+    },
+  },
+};
 </script>
 
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-control" :class="{invalid: userNameValidity === 'invalid'}">
+    <div class="form-control">
       <label for="user-name">Your Name</label>
-      <input id="user-name" name="user-name" type="text" v-model.trim="userName" @blur="validateInput" />
-      <p v-if="userNameValidity === 'invalid'">please enter a valid name!</p>
+      <input id="user-name" name="user-name" type="text" v-model="userName" />
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
@@ -61,7 +35,7 @@ import RatingControl from './RatingControl.vue';
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
-      <select id="referrer" name="referrer" v-model="referrerUser">
+      <select id="referrer" name="referrer" v-model="referrer">
         <option value="google">Google</option>
         <option value="wom">Word of mouth</option>
         <option value="newspaper">Newspaper</option>
@@ -70,47 +44,38 @@ import RatingControl from './RatingControl.vue';
     <div class="form-control">
       <h2>What are you interested in?</h2>
       <div>
-        <input id="interest-news" name="interest" type="checkbox" value="news" v-model="interest"/>
+        <input id="interest-news" name="interest" type="checkbox" />
         <label for="interest-news">News</label>
       </div>
       <div>
-        <input id="interest-tutorials" name="interest" type="checkbox" value="tutorials"  v-model="interest" />
+        <input id="interest-tutorials" name="interest" type="checkbox" />
         <label for="interest-tutorials">Tutorials</label>
       </div>
       <div>
-        <input id="interest-nothing" name="interest" type="checkbox" value="nothing"  v-model="interest" />
+        <input id="interest-nothing" name="interest" type="checkbox" />
         <label for="interest-nothing">Nothing</label>
       </div>
     </div>
     <div class="form-control">
       <h2>How do you learn?</h2>
       <div>
-        <input id="how-video" name="how" type="radio" value="VideoCourses"  v-model="how" />
+        <input id="how-video" name="how" type="radio" />
         <label for="how-video">Video Courses</label>
       </div>
       <div>
-        <input id="how-blogs" name="how" type="radio" value="Blogs"  v-model="how" />
+        <input id="how-blogs" name="how" type="radio" />
         <label for="how-blogs">Blogs</label>
       </div>
       <div>
-        <input id="how-other" name="how" type="radio" value="Other"  v-model="how" />
+        <input id="how-other" name="how" type="radio" />
         <label for="how-other">Other</label>
       </div>
-    </div>
-    <div class="form-control">
-      <ration-control></ration-control>
-    </div>
-    <div class="form-control">
-      <input type="checkbox" id="confirm-terms" name="confirm-term">
-      <label for="confirm-terms">Agree to terms of use?</label>
-
     </div>
     <div>
       <button>Save Data</button>
     </div>
   </form>
 </template>
-
 
 <style scoped>
 form {
@@ -124,13 +89,6 @@ form {
 
 .form-control {
   margin: 0.5rem 0;
-}
-
-.form-control.invalid input {
-  border-color: red;
-}
-.form-control.invalid label {
-  color: reds;
 }
 
 label {
@@ -154,15 +112,15 @@ select {
   width: auto;
 }
 
-input[type='checkbox'],
-input[type='radio'] {
+input[type="checkbox"],
+input[type="radio"] {
   display: inline-block;
   width: auto;
   margin-right: 1rem;
 }
 
-input[type='checkbox'] + label,
-input[type='radio'] + label {
+input[type="checkbox"] + label,
+input[type="radio"] + label {
   font-weight: normal;
 }
 
