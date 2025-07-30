@@ -145,6 +145,9 @@ form {
 .form-control.invalid label {
   color: red;
 }
+.form-control.invalid p {
+  color: red;
+}
 
 label {
   font-weight: bold;
