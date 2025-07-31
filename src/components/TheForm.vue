@@ -1,36 +1,45 @@
 <script>
+import RatingControl from "./RatingControl.vue";
+
 export default {
+  components: {
+    RatingControl,
+  },
   data() {
     return {
       userName: "",
       userAge: null,
-      referrer: "newspaper",
+      referrer: "wom",
       interest: [],
       how: null,
       confirm: false,
+      rating: null,
       userNameValidity: "pending",
     };
   },
   methods: {
     submitForm() {
-      console.log("username:" + this.userName);
+      console.log("Username: " + this.userName);
       this.userName = "";
-      console.log("user age:");
+      console.log("User age:");
       console.log(this.userAge + 5);
       console.log(this.$refs.ageInput.value + 5);
       console.log(31);
       this.userAge = null;
-      console.log("Referrer:" + this.referrer);
-      this.referrer = "newspaper";
-      console.log("checkbox");
+      console.log("Referrer: " + this.referrer);
+      this.referrer = "wom";
+      console.log("Checkboxes");
       console.log(this.interest);
-      console.log("Radio button");
+      console.log("Radio buttons");
       console.log(this.how);
       this.interest = [];
       this.how = null;
       console.log("Confirm?");
       console.log(this.confirm);
       this.confirm = false;
+      console.log("Rating");
+      console.log(this.rating);
+      this.rating = null;
     },
     validateInput() {
       if (this.userName === "") {
@@ -54,7 +63,7 @@ export default {
         v-model.trim="userName"
         @blur="validateInput"
       />
-      <p v-if="userNameValidity === 'invalid'">Please Write something</p>
+      <p v-if="userNameValidity === 'invalid'">Please enter a valid name!</p>
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
@@ -117,6 +126,9 @@ export default {
       </div>
     </div>
     <div class="form-control">
+      <rating-control v-model="rating"></rating-control>
+    </div>
+    <div class="form-control">
       <input type="checkbox" id="confirm-terms" name="confirm-terms" v-model="confirm" />
       <label for="confirm-terms">Agree to terms of use?</label>
     </div>
@@ -139,13 +151,12 @@ form {
 .form-control {
   margin: 0.5rem 0;
 }
+
 .form-control.invalid input {
   border-color: red;
 }
+
 .form-control.invalid label {
-  color: red;
-}
-.form-control.invalid p {
   color: red;
 }
 
